@@ -1,0 +1,230 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 600px;
+    background-color: #fff; /* Minimalist light grey */
+    padding: 2.5rem 2.5rem 0.5rem 2.5rem; /* Increased padding */
+    border-right: 0px solid #dee2e6; /* Adjusted border for new bg */
+}
+
+.sidebar h1 {
+    margin-bottom: 2.5rem;
+    text-align: left;
+  min-width: 250px;
+}
+
+/* Style for the link inside the sidebar h1 */
+.sidebar h1 a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from h1 */
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 1rem;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #858585;
+    display: block;
+    padding: 0.1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #fff;
+    text-decoration: none;
+    color: #5e5e5e;
+}
+
+/* Projects Grid Styles */
+.projects-grid {
+    flex-grow: 1; /* Takes remaining space */
+    padding: 3rem; /* Increased padding */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns */
+    gap: 2rem; /* Increased gap */
+    background-color: #fff;
+    /* align-content: start; // Optional: might help align items nicely */
+}
+
+.project-box {
+    position: relative; /* Needed for absolute positioning of project name */
+    display: block; /* To make the whole box clickable */
+    overflow: hidden; /* Hide parts of image/name that overflow */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 2 / 1; /* Target aspect ratio (like 600x300) */
+    width: 100%;       /* Ensure it tries to fill the column */
+}
+
+.project-box img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-box .project-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    color: #333333eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-align: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-box:hover {
+}
+
+.project-box:hover img {
+}
+
+.project-box:hover .project-name {
+    opacity: 0.9;
+}
+
+/* Project Page Specific Styles */
+.project-main-content {
+    flex-grow: 1;
+    padding: 3rem; /* Match padding of projects-grid */
+    background-color: #fff;
+}
+
+.project-details {
+    display: grid; /* Changed to grid */
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 1rem 2rem; /* Row gap, Column gap */
+    align-items: start; /* Align items to the top of their cells */
+    margin-bottom: 2.5rem;
+    max-width: none; /* Allow it to use the full width of .project-main-content if needed */
+}
+
+/* H2 becomes the small subtitle at the top */
+.project-details h2 {
+    grid-column: 1 / -1; /* Span both columns */
+    grid-row: 1;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 100; /* Thin */
+    color: #858585;
+    padding-top: 0; /* Reset previous padding */
+    padding-bottom: 0.5rem; /* Space below subtitle */
+    line-height: 1.6;
+    margin-bottom: 0; /* Reset margin */
+}
+
+/* H1 becomes the large title on the left */
+.project-details h1 {
+    grid-column: 1 / 2; /* First column */
+    grid-row: 2;
+    font-size: 3.5rem; /* Large font size */
+    font-weight: 600; /* Semi-bold */
+    color: #333; /* Dark color */
+    line-height: 1.1;
+    margin-bottom: 0; /* Reset margin */
+}
+
+/* New wrapper for the right column content */
+.project-details .description-column {
+    grid-column: 2 / 3; /* Second column */
+    grid-row: 2;
+    padding-top: 0.3em; /* Align slightly with H1 baseline */
+}
+
+/* Main paragraph in the right column */
+.project-details .description-column p {
+    font-size: 14px;
+    font-weight: 400; /* Regular */
+    color: #858585;
+    line-height: 1.6;
+    margin-top: 0; /* Reset margin */
+    margin-bottom: 1rem;
+}
+
+/* Smaller text block below the main paragraph */
+.project-details .description-column p.p2-style {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 100; /* Thin */
+    color: #989898;
+    line-height: 1.5;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Old H3 style - review if still needed or repurpose */
+.project-details h3 { 
+    font-size: 12px;
+    font-weight: 400; 
+    color: #858585;
+    padding-bottom: 4px;
+    line-height: 1.4; 
+    margin-top: 0.1rem; 
+    margin-bottom: 0.1rem; 
+}
+
+/* General p style from before - now covered by .description-column p */
+/* .project-details p { ... } */
+
+/* p2 tag style from before - now covered by p.p2-style */
+/* .project-details p2 { ... } */
+
+.project-details hr {
+    /* HR might need to be removed or placed differently in the new layout */
+    grid-column: 1 / -1; /* If kept, make it span */
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.project-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2-column grid */
+    gap: 1.5rem; /* Gap between images */
+}
+
+.project-image-grid img {
+    width: 100%; /* Make images fill their grid cell */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    border-radius: 4px; /* Optional: add slight rounding */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); Optional: subtle shadow */
+}
+
+/* Class for images that should span both columns */
+.project-image-grid .wide-image {
+    grid-column: span 2;
+} 

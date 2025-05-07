@@ -1,0 +1,6 @@
+# Ignore node_modules if you use any build tools
+node_modules/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db 
